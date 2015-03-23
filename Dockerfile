@@ -10,7 +10,8 @@ RUN apt-get update -qq && apt-get install -qqy \
     iptables
     
 # Install Docker from Docker Inc. repositories.
-RUN curl -sSL https://get.docker.com/ubuntu/ | sh
+COPY vendor/docker /usr/bin/
+COPY vendor/dockerinit /usr/bin/
 
 # Install the magic wrapper.
 ADD ./wrapdocker /usr/local/bin/wrapdocker

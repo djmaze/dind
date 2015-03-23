@@ -1,6 +1,8 @@
-# Docker-in-Docker
+# Docker-in-Docker (armhf version)
 
-This recipe lets you run Docker within Docker.
+This recipe lets you run Docker within Docker. 
+
+_This is a port to the armhf architecture (for ARMv7+ devices)._
 
 ![Inception's Spinning Top](spintop.jpg)
 

@@ -1,0 +1,24 @@
+IMAGE = dind
+REPOSITORY_IMAGE = armhfbuild/dind
+X86_REPOSITORY_IMAGE = jpetazzo/dind
+
+default: build
+
+.build: .
+	docker build -t $(IMAGE) .
+	@docker inspect -f '{{.Id}}' $(IMAGE) > $@
+
+build: .build
+
+.tag: build
+	docker tag -f $(IMAGE) $(REPOSITORY_IMAGE)
+	docker tag -f $(IMAGE) $(X86_REPOSITORY_IMAGE)
+	@touch $@
+
+tag: .tag
+
+.push: tag
+	docker push $(REPOSITORY_IMAGE)
+	@touch $@
+
+push: .push
